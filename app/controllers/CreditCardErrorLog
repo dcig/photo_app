@@ -1,0 +1,504 @@
+Started POST "/users" for ::1 at 2019-12-22 15:14:17 -0600
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"75rBBWLRPNOarDsmLaYpfDWO6fJWuhASwjc8kx7Zo6MGMPxTUeQGGc2ksB73V1mWIBD4pmReO5P8DjN6Wmup9g==", "user"=>{"email"=>"dancigler@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "payment"=>{"card_number"=>"4242424242424242", "card_cvv"=>"123", "card_expires_month"=>"4", "card_expires_year"=>"2022"}, "commit"=>"Sign up"}
+   (0.1ms)  begin transaction
+  User Exists (0.1ms)  SELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?  [["email", "dancigler@example.com"], ["LIMIT", 1]]
+  SQL (0.4ms)  INSERT INTO "users" ("email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "dancigler@example.com"], ["encrypted_password", "$2a$11$nW8G7ngJL1gTs8vAUNZTX.o8E/YsRNuye6zF3ywKEPBZieWxs7k9i"], ["confirmation_token", "W24kPzsrPHQU9q-618pi"], ["confirmation_sent_at", "2019-12-22 21:14:17.557285"], ["created_at", "2019-12-22 21:14:17.557156"], ["updated_at", "2019-12-22 21:14:17.557156"]]
+   (5.8ms)  rollback transaction
+Completed 500 Internal Server Error in 284ms (ActiveRecord: 6.4ms)
+
+
+  
+NameError (undefined local variable or method `payment' for #<RegistrationsController:0x00007ffec369d650>):
+  
+app/controllers/registrations_controller.rb:10:in `block in create'
+app/controllers/registrations_controller.rb:6:in `create'
+Started POST "/users" for ::1 at 2019-12-22 15:14:42 -0600
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"75rBBWLRPNOarDsmLaYpfDWO6fJWuhASwjc8kx7Zo6MGMPxTUeQGGc2ksB73V1mWIBD4pmReO5P8DjN6Wmup9g==", "user"=>{"email"=>"dancigler@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "payment"=>{"card_number"=>"4242424242424242", "card_cvv"=>"123", "card_expires_month"=>"4", "card_expires_year"=>"2022"}, "commit"=>"Sign up"}
+   (0.1ms)  begin transaction
+  User Exists (0.2ms)  SELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?  [["email", "dancigler@example.com"], ["LIMIT", 1]]
+  SQL (0.5ms)  INSERT INTO "users" ("email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "dancigler@example.com"], ["encrypted_password", "$2a$11$uoja/XtVlPaxc0mMPUZheuEM.U5vE9o0d2Y5Du6uRjjSu6nZymk2q"], ["confirmation_token", "xAoou6-Jk4BWgqczyQSb"], ["confirmation_sent_at", "2019-12-22 21:14:42.961899"], ["created_at", "2019-12-22 21:14:42.961757"], ["updated_at", "2019-12-22 21:14:42.961757"]]
+  User Load (0.3ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 3], ["LIMIT", 1]]
+  SQL (0.2ms)  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 3]]
+Payment failed
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (43.7ms)
+   (2.4ms)  commit transaction
+  Rendering /Users/dcig/.rvm/gems/ruby-2.5.1/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /Users/dcig/.rvm/gems/ruby-2.5.1/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (0.8ms)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 266.2ms
+Sent mail to dancigler@example.com (9.7ms)
+Date: Sun, 22 Dec 2019 15:14:46 -0600
+From: dcig-do-not-reply@example.com
+Reply-To: dcig-do-not-reply@example.com
+To: dancigler@example.com
+Message-ID: <5dffdcc63b3d1_a87c3fff5f16f94c346e1@MacBook-Pro-173.attlocal.net.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome dancigler@example.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=xAoou6-Jk4BWgqczyQSb">Confirm my account</a></p>
+
+Completed 200 OK in 3417ms (Views: 346.6ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2019-12-22 15:21:10 -0600
+Processing by RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (7.7ms)
+Completed 200 OK in 79ms (Views: 76.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2019-12-22 15:22:48 -0600
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZIa0fVKtu59XUW73mXTRzoJzsvvo5FtY4GZiLB/64ly7IX9nXSGZQNo1Evdahw4w6/68YKMHwU1/5o1q163NMA==", "user"=>{"email"=>"dancigler@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "payment"=>{"card_number"=>"4242424242424242", "card_cvv"=>"123", "card_expires_month"=>"4", "card_expires_year"=>"2022"}, "commit"=>"Sign up"}
+   (0.1ms)  begin transaction
+  User Exists (0.2ms)  SELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?  [["email", "dancigler@example.com"], ["LIMIT", 1]]
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (0.9ms)
+   (0.1ms)  rollback transaction
+Completed 500 Internal Server Error in 68ms (ActiveRecord: 0.3ms)
+
+
+  
+SyntaxError (/Users/dcig/ror/photo-app/app/views/devise/registrations/new.html.erb:7: syntax error, unexpected =>
+...end=  form_for(resource, as: => resource_name, url: => regis...
+...                             ^~
+/Users/dcig/ror/photo-app/app/views/devise/registrations/new.html.erb:7: syntax error, unexpected ',', expecting keyword_end
+...gistration_path(resource_name), html: { role: "form" , class...
+...                              ^
+/Users/dcig/ror/photo-app/app/views/devise/registrations/new.html.erb:7: syntax error, unexpected ')', expecting keyword_end
+...le: "form" , class: 'cc_form'}) do |f| @output_buffer.safe_a...
+...                              ^
+/Users/dcig/ror/photo-app/app/views/devise/registrations/new.html.erb:58: syntax error, unexpected keyword_ensure, expecting end-of-input
+          ensure
+          ^~~~~~):
+  
+app/views/devise/registrations/new.html.erb:7: syntax error, unexpected =>
+app/views/devise/registrations/new.html.erb:7: syntax error, unexpected ',', expecting keyword_end
+app/views/devise/registrations/new.html.erb:7: syntax error, unexpected ')', expecting keyword_end
+app/views/devise/registrations/new.html.erb:58: syntax error, unexpected keyword_ensure, expecting end-of-input
+app/controllers/registrations_controller.rb:38:in `block in create'
+app/controllers/registrations_controller.rb:6:in `create'
+Started POST "/users" for ::1 at 2019-12-22 15:24:35 -0600
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZIa0fVKtu59XUW73mXTRzoJzsvvo5FtY4GZiLB/64ly7IX9nXSGZQNo1Evdahw4w6/68YKMHwU1/5o1q163NMA==", "user"=>{"email"=>"dancigler@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "payment"=>{"card_number"=>"4242424242424242", "card_cvv"=>"123", "card_expires_month"=>"4", "card_expires_year"=>"2022"}, "commit"=>"Sign up"}
+   (0.1ms)  begin transaction
+  User Exists (0.2ms)  SELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?  [["email", "dancigler@example.com"], ["LIMIT", 1]]
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (6.1ms)
+   (0.1ms)  commit transaction
+Completed 200 OK in 102ms (Views: 66.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for ::1 at 2019-12-22 15:25:13 -0600
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"C70wUfr267TGWAkpTuJRDVzs9DUsOyoCgmFVtYAz2XTUGvtL9XrJa0s8dSmNEY7zNWH6rmfYsBcd4brzSGT2GA==", "user"=>{"email"=>"dancigler@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "payment"=>{"card_number"=>"4242424242424242", "card_cvv"=>"123", "card_expires_month"=>"4", "card_expires_year"=>"2022"}, "commit"=>"Sign up"}
+   (0.1ms)  begin transaction
+  User Exists (0.1ms)  SELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?  [["email", "dancigler@example.com"], ["LIMIT", 1]]
+  SQL (0.4ms)  INSERT INTO "users" ("email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "dancigler@example.com"], ["encrypted_password", "$2a$11$GwAsmoz3bdXUYaFWUNryceGbrSPR40omq26sVh0ahamPG9FdkJ6Hi"], ["confirmation_token", "HGjgx334QGEd-63P7ytY"], ["confirmation_sent_at", "2019-12-22 21:25:13.354218"], ["created_at", "2019-12-22 21:25:13.354077"], ["updated_at", "2019-12-22 21:25:13.354077"]]
+  User Load (0.1ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 4], ["LIMIT", 1]]
+  SQL (0.2ms)  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 4]]
+Payment failed
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (7.3ms)
+   (2.9ms)  commit transaction
+  Rendering /Users/dcig/.rvm/gems/ruby-2.5.1/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /Users/dcig/.rvm/gems/ruby-2.5.1/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (0.5ms)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 101.3ms
+Sent mail to dancigler@example.com (1.6ms)
+Date: Sun, 22 Dec 2019 15:25:14 -0600
+From: dcig-do-not-reply@example.com
+Reply-To: dcig-do-not-reply@example.com
+To: dancigler@example.com
+Message-ID: <5dffdf3a289fa_a87c3fff5f16fb18347a5@MacBook-Pro-173.attlocal.net.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome dancigler@example.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=HGjgx334QGEd-63P7ytY">Confirm my account</a></p>
+
+Completed 200 OK in 930ms (Views: 72.1ms | ActiveRecord: 3.7ms)
+
+
+Started POST "/users" for ::1 at 2019-12-22 15:29:03 -0600
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aOW+nUCZ9gcA4AHKHwhDyiNBiDH4msGN9Q1AEUwBUJ23QnWHTxXU2I2Efcrc+5w0SsyGqrN5W5hqja9XhFZ/8Q==", "user"=>{"email"=>"dancigler@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "payment"=>{"card_number"=>"4012888888881881", "card_cvv"=>"111", "card_expires_month"=>"5", "card_expires_year"=>"2020"}, "commit"=>"Sign up"}
+   (0.1ms)  begin transaction
+  User Exists (0.2ms)  SELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?  [["email", "dancigler@example.com"], ["LIMIT", 1]]
+  SQL (0.5ms)  INSERT INTO "users" ("email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "dancigler@example.com"], ["encrypted_password", "$2a$11$/IV0Fagp9sHMQCzFSb4cleFOgbiKrBEEwQQ.DiJ.gL7XOoJOicLFi"], ["confirmation_token", "ydx4M4CkYoc2xygJV6Be"], ["confirmation_sent_at", "2019-12-22 21:29:03.159844"], ["created_at", "2019-12-22 21:29:03.159711"], ["updated_at", "2019-12-22 21:29:03.159711"]]
+  User Load (0.1ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 5], ["LIMIT", 1]]
+  SQL (0.3ms)  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 5]]
+Payment failed
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (9.0ms)
+   (6.4ms)  commit transaction
+  Rendering /Users/dcig/.rvm/gems/ruby-2.5.1/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /Users/dcig/.rvm/gems/ruby-2.5.1/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (0.7ms)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 106.6ms
+Sent mail to dancigler@example.com (1.6ms)
+Date: Sun, 22 Dec 2019 15:29:03 -0600
+From: dcig-do-not-reply@example.com
+Reply-To: dcig-do-not-reply@example.com
+To: dancigler@example.com
+Message-ID: <5dffe01feba98_a87c3fff6193a0803483e@MacBook-Pro-173.attlocal.net.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome dancigler@example.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=ydx4M4CkYoc2xygJV6Be">Confirm my account</a></p>
+
+Completed 200 OK in 926ms (Views: 77.1ms | ActiveRecord: 7.6ms)
+
+
+Started GET "/users" for ::1 at 2019-12-22 15:34:19 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+actionpack (5.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.7) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.7) lib/rails/engine.rb:522:in `call'
+puma (3.12.2) lib/puma/configuration.rb:227:in `call'
+puma (3.12.2) lib/puma/server.rb:674:in `handle_request'
+puma (3.12.2) lib/puma/server.rb:476:in `process_client'
+puma (3.12.2) lib/puma/server.rb:334:in `block in run'
+puma (3.12.2) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/users" for ::1 at 2019-12-22 15:34:27 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+actionpack (5.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.7) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.7) lib/rails/engine.rb:522:in `call'
+puma (3.12.2) lib/puma/configuration.rb:227:in `call'
+puma (3.12.2) lib/puma/server.rb:674:in `handle_request'
+puma (3.12.2) lib/puma/server.rb:476:in `process_client'
+puma (3.12.2) lib/puma/server.rb:334:in `block in run'
+puma (3.12.2) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/users/sign_up" for ::1 at 2019-12-22 15:34:32 -0600
+Processing by RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.7ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 82ms (Views: 80.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2019-12-22 15:35:05 -0600
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MacokX+T9dClXP3dNI3MMfBrhdT5hhwxtvl2Az0j3zfuAOOLcB/XDyg4gd33fhPPmeaLT7JlhiQpeZlF9XTwWw==", "user"=>{"email"=>"dancigler@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "payment"=>{"card_number"=>"4000056655665556", "card_cvv"=>"111", "card_expires_month"=>"3", "card_expires_year"=>"2021"}, "commit"=>"Sign up"}
+   (0.1ms)  begin transaction
+  User Exists (0.2ms)  SELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?  [["email", "dancigler@gmail.com"], ["LIMIT", 1]]
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (6.0ms)
+   (0.1ms)  commit transaction
+Completed 200 OK in 199ms (Views: 53.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-12-22 15:35:14 -0600
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 69ms (Views: 66.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2019-12-22 15:35:23 -0600
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GgAi3QmNr7I/RbjhbxzWG0oflwYp7+O1GYanSdpbEjMrjbyOfiYSjxhh31zp0StYlWAYPYxZaviIWISPDvsoWA==", "user"=>{"email"=>"dancigler@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  User Load (0.3ms)  SELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?  [["email", "dancigler@gmail.com"], ["LIMIT", 1]]
+   (0.1ms)  begin transaction
+  SQL (0.3ms)  UPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["current_sign_in_at", "2019-12-22 21:35:23.746286"], ["last_sign_in_at", "2019-12-03 02:13:52.396190"], ["sign_in_count", 3], ["updated_at", "2019-12-22 21:35:23.746998"], ["id", 1]]
+   (6.3ms)  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 160ms (ActiveRecord: 6.9ms)
+
+
+Started GET "/" for ::1 at 2019-12-22 15:35:23 -0600
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  User Load (0.2ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 35ms (Views: 32.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2019-12-22 15:35:28 -0600
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  User Load (0.3ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 48ms (Views: 44.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/path1" for ::1 at 2019-12-22 15:35:29 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/path1"):
+  
+actionpack (5.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.7) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.7) lib/rails/engine.rb:522:in `call'
+puma (3.12.2) lib/puma/configuration.rb:227:in `call'
+puma (3.12.2) lib/puma/server.rb:674:in `handle_request'
+puma (3.12.2) lib/puma/server.rb:476:in `process_client'
+puma (3.12.2) lib/puma/server.rb:334:in `block in run'
+puma (3.12.2) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/users/sign_up" for ::1 at 2019-12-22 15:35:35 -0600
+Processing by RegistrationsController#new as HTML
+  User Load (0.2ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2019-12-22 15:35:35 -0600
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  User Load (0.2ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 40ms (Views: 37.3ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2019-12-22 15:35:44 -0600
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"q35KKxRdir/myaXI0b8FZANHgGk1LXWlizrfNaCLp3+EvM0ahe+BUGa4CWRIcAFX3h0UsYMbFKLI+hHrWflQFQ=="}
+  User Load (0.2ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?  [["id", 1], ["LIMIT", 1]]
+   (0.0ms)  begin transaction
+   (0.0ms)  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-12-22 15:35:44 -0600
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 37ms (Views: 35.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2019-12-22 15:35:53 -0600
+Processing by RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.7ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 98ms (Views: 96.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-12-22 15:36:02 -0600
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 66ms (Views: 64.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2019-12-22 15:36:17 -0600
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lGSWp2IXJwXUsFMLnjv5u4Htiof6X0/LAifgTilZszFoeRQd+gN5DW9PMRSug/dw6JXnZniLsbXswc2XoFg5uw==", "user"=>{"email"=>"dancigler@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  User Load (0.4ms)  SELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?  [["email", "dancigler@gmail.com"], ["LIMIT", 1]]
+   (0.1ms)  begin transaction
+  SQL (0.3ms)  UPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["current_sign_in_at", "2019-12-22 21:36:17.619594"], ["last_sign_in_at", "2019-12-22 21:35:23.746286"], ["sign_in_count", 4], ["updated_at", "2019-12-22 21:36:17.620176"], ["id", 1]]
+   (6.2ms)  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 151ms (ActiveRecord: 6.9ms)
+
+
+Started GET "/" for ::1 at 2019-12-22 15:36:17 -0600
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  User Load (0.3ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 39ms (Views: 37.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-12-22 15:36:23 -0600
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  User Load (0.2ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 42ms (Views: 38.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2019-12-22 15:36:28 -0600
+Processing by RegistrationsController#new as HTML
+  User Load (0.2ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2019-12-22 15:36:33 -0600
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  User Load (0.2ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 37ms (Views: 35.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2019-12-22 15:36:37 -0600
+Processing by RegistrationsController#new as HTML
+  User Load (0.4ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2019-12-22 15:36:42 -0600
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"8/eAP3cThwTqHfTox3myRNwNs/W0Txn7O6MF4MsB2PfiXtQ7pAaohCJjdBVUEr+9TuzXfS+qvPlIcep1z9LWpw=="}
+  User Load (0.3ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?  [["id", 1], ["LIMIT", 1]]
+   (0.1ms)  begin transaction
+   (0.0ms)  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2019-12-22 15:36:42 -0600
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 36ms (Views: 33.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-12-22 15:41:22 -0600
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 40ms (Views: 37.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2019-12-22 15:41:25 -0600
+Processing by RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 85ms (Views: 84.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2019-12-22 15:41:58 -0600
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5pR5Ff0isHo36rzEN/rab1LKHmBuylsSS2/OPVe7JYfoH9HDddnTBPG4Fp1nU7ZIq9W7K/YBvhJNShNIfAHyNA==", "user"=>{"email"=>"dcigler@dealerinspire.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "payment"=>{"card_number"=>"4000056655665556", "card_cvv"=>"122", "card_expires_month"=>"4", "card_expires_year"=>"2022"}, "commit"=>"Sign up"}
+   (0.1ms)  begin transaction
+  User Exists (0.1ms)  SELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?  [["email", "dcigler@dealerinspire.com"], ["LIMIT", 1]]
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (6.0ms)
+   (0.1ms)  commit transaction
+Completed 200 OK in 200ms (Views: 53.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for ::1 at 2019-12-22 15:42:46 -0600
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RRcaBD3B0MwrkBExJqLDrLi4iuHLmnYtIm+D/e4aRlATUhg2k+LG8kj+hVa1D90gAosHMGRyNC3SEwCdZhdZvQ==", "user"=>{"email"=>"user@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "payment"=>{"card_number"=>"4000056655665556", "card_cvv"=>"122", "card_expires_month"=>"4", "card_expires_year"=>"2022"}, "commit"=>"Sign up"}
+   (0.1ms)  begin transaction
+  User Exists (0.2ms)  SELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?  [["email", "user@example.com"], ["LIMIT", 1]]
+  SQL (0.3ms)  INSERT INTO "users" ("email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "user@example.com"], ["encrypted_password", "$2a$11$qjDwHj/mBdqvajPuxJVo6.MQtGZU5YCfGB9nqxl.OKI4wMJrZWGAC"], ["confirmation_token", "Wfyro8zyRBQyRW7SQ9Gx"], ["confirmation_sent_at", "2019-12-22 21:42:46.765305"], ["created_at", "2019-12-22 21:42:46.765220"], ["updated_at", "2019-12-22 21:42:46.765220"]]
+  User Load (0.1ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 6], ["LIMIT", 1]]
+  SQL (0.2ms)  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 6]]
+Payment failed
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (8.1ms)
+   (6.4ms)  commit transaction
+  Rendering /Users/dcig/.rvm/gems/ruby-2.5.1/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /Users/dcig/.rvm/gems/ruby-2.5.1/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (0.6ms)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 101.0ms
+Sent mail to user@example.com (1.5ms)
+Date: Sun, 22 Dec 2019 15:42:47 -0600
+From: dcig-do-not-reply@example.com
+Reply-To: dcig-do-not-reply@example.com
+To: user@example.com
+Message-ID: <5dffe3578d4af_a87c3fff5f16f9ec349ee@MacBook-Pro-173.attlocal.net.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome user@example.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=Wfyro8zyRBQyRW7SQ9Gx">Confirm my account</a></p>
+
+Completed 200 OK in 932ms (Views: 73.8ms | ActiveRecord: 7.2ms)
