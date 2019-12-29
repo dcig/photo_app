@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Sign In/Up w/ devise authentication, Stripe API, Email & Confirmation & CC Processing https://zeitung.herokuapp.com/
 
-Things you may want to cover:
 
-* Ruby version
+* Built on a MacBook Pro for some experience developing in another enviroment other than Linux & PC
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
